@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@flowengage/react-chatbot/styles.css";
+import { FlowEngageProvider, FlowEngageWidget } from "@flowengage/react-chatbot";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -22,9 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <FlowEngageProvider siteId="48c97b6b-c5eb-4a64-922b-48118bc1aa70">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <FlowEngageWidget />
+        </FlowEngageProvider>
       </body>
     </html>
   );
